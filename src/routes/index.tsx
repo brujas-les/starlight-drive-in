@@ -83,7 +83,7 @@ function Index() {
       <div className="absolute bottom-0 h-[28%] w-full bg-gradient-to-b from-night to-night-deep" />
 
       {/* Cars */}
-      <img src={cars} alt="Row of 1950s cars facing the screen" width={1920} height={230} className="absolute bottom-[6%] left-1/2 w-[110vw] max-w-none -translate-x-1/2 drop-shadow-[0_10px_20px_var(--night-deep)]" />
+      <img src={cars} alt="Row of 1950s cars facing the screen" width={1920} height={230} className="absolute bottom-[6%] grayscale left-1/2 w-[110vw] max-w-none -translate-x-1/2 drop-shadow-[0_10px_20px_var(--night-deep)]" />
 
       {/* Dashboard controls */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-4 text-xs uppercase tracking-[0.3em]">

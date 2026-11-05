@@ -142,3 +142,44 @@
     color: var(--color-foreground);
   }
 }
+
+:root {
+  --night: oklch(0.14 0.04 265);
+  --night-deep: oklch(0.08 0.03 270);
+  --neon-pink: oklch(0.72 0.24 0);
+  --neon-teal: oklch(0.85 0.14 190);
+  --marquee: oklch(0.88 0.16 85);
+  --screen-glow: oklch(0.95 0.03 90);
+  --font-neon: "Monoton", cursive;
+  --font-script: "Yellowtail", cursive;
+  --font-body: "Oswald", sans-serif;
+}
+@theme inline {
+  --color-night: var(--night);
+  --color-night-deep: var(--night-deep);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-teal: var(--neon-teal);
+  --color-marquee: var(--marquee);
+  --color-screen-glow: var(--screen-glow);
+  --font-neon: var(--font-neon);
+  --font-script: var(--font-script);
+  --font-body: var(--font-body);
+}
+@utility sky { background: radial-gradient(ellipse at 50% 110%, oklch(0.3 0.08 300) 0%, var(--night) 45%, var(--night-deep) 100%); }
+@utility stars {
+  background-image: radial-gradient(1px 1px at 10% 20%, var(--screen-glow), transparent), radial-gradient(1px 1px at 30% 8%, var(--screen-glow), transparent), radial-gradient(1.5px 1.5px at 55% 15%, var(--screen-glow), transparent), radial-gradient(1px 1px at 72% 30%, var(--screen-glow), transparent), radial-gradient(1px 1px at 88% 12%, var(--screen-glow), transparent), radial-gradient(1px 1px at 18% 35%, var(--screen-glow), transparent), radial-gradient(1.5px 1.5px at 93% 40%, var(--screen-glow), transparent), radial-gradient(1px 1px at 42% 28%, var(--screen-glow), transparent);
+  background-size: 400px 300px; animation: twinkle 4s ease-in-out infinite alternate;
+}
+@utility neon-pink { color: var(--neon-pink); text-shadow: 0 0 6px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 42px var(--neon-pink); animation: flicker 6s infinite; }
+@utility neon-teal { color: var(--neon-teal); text-shadow: 0 0 6px var(--neon-teal), 0 0 22px var(--neon-teal); }
+@utility screen-frame { box-shadow: 0 0 60px 10px color-mix(in oklab, var(--screen-glow) 25%, transparent), 0 0 200px 40px color-mix(in oklab, var(--screen-glow) 10%, transparent); border: 10px solid var(--night-deep); }
+@utility projector-beam { background: conic-gradient(from 160deg at 50% 100%, transparent 0deg, color-mix(in oklab, var(--screen-glow) 14%, transparent) 15deg, color-mix(in oklab, var(--screen-glow) 14%, transparent) 25deg, transparent 40deg); filter: blur(6px); animation: beam 3s ease-in-out infinite alternate; }
+@utility film-grain { background-image: repeating-radial-gradient(circle at 30% 40%, color-mix(in oklab, var(--night-deep) 20%, transparent) 0 1px, transparent 1px 3px); animation: grain 0.4s steps(3) infinite; mix-blend-mode: multiply; }
+@utility marquee-bulbs { background-image: radial-gradient(circle, var(--marquee) 30%, transparent 35%); background-size: 18px 18px; filter: drop-shadow(0 0 4px var(--marquee)); animation: chase 0.8s steps(2) infinite; }
+@keyframes twinkle { to { opacity: 0.5; } }
+@keyframes flicker { 0%,19%,22%,62%,64%,100% { opacity: 1; } 20%,63% { opacity: 0.4; } }
+@keyframes beam { to { opacity: 0.6; } }
+@keyframes grain { 0% { transform: translate(0,0); } 50% { transform: translate(-2px,1px); } 100% { transform: translate(1px,-2px); } }
+@keyframes chase { to { background-position: 9px 0; } }
+@keyframes sweep { to { transform: rotate(360deg); } }
+@keyframes drift { from { transform: translateX(-10%); } to { transform: translateX(110vw); } }

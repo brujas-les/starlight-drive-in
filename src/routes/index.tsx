@@ -54,18 +54,6 @@ function BlueprintSketch() {
         <line x1="0" y1="720" x2="1600" y2="720" strokeWidth="2" />
         <line x1="0" y1="726" x2="1600" y2="726" strokeDasharray="8 6" opacity="0.5" />
 
-        {/* Restaurant building, left */}
-        <rect x="90" y="520" width="300" height="200" />
-        <rect x="110" y="560" width="80" height="60" />
-        <rect x="210" y="560" width="80" height="60" />
-        <line x1="90" y1="540" x2="390" y2="540" strokeDasharray="4 4" />
-        {/* Golden arches */}
-        <path d="M 150 520 C 150 420, 230 420, 230 520" strokeWidth="3" />
-        <path d="M 230 520 C 230 420, 310 420, 310 520" strokeWidth="3" />
-        {/* Roof sign */}
-        <rect x="330" y="440" width="14" height="80" />
-        <circle cx="337" cy="428" r="16" />
-
         {/* Speaker posts in rows */}
         {[0, 1, 2, 3, 4, 5].map((i) => (
           <g key={`sp1-${i}`}>
@@ -77,17 +65,6 @@ function BlueprintSketch() {
           <g key={`sp2-${i}`}>
             <line x1={575 + i * 110} y1="700" x2={575 + i * 110} y2="664" />
             <circle cx={575 + i * 110} cy="658" r="7" />
-          </g>
-        ))}
-
-        {/* Parked cars, simple side profiles */}
-        {[0, 1, 2].map((i) => (
-          <g key={`car-${i}`} transform={`translate(${1180 + i * 140}, 676)`}>
-            <path d="M 0 44 L 8 24 L 34 18 L 46 4 L 92 4 L 106 18 L 124 22 L 130 44 Z" />
-            <circle cx="32" cy="44" r="10" />
-            <circle cx="98" cy="44" r="10" />
-            <line x1="46" y1="18" x2="46" y2="4" opacity="0.6" />
-            <line x1="92" y1="4" x2="92" y2="18" opacity="0.6" />
           </g>
         ))}
 

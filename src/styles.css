@@ -144,12 +144,15 @@
 }
 
 :root {
-  --night: oklch(0.14 0 0);
-  --night-deep: oklch(0.06 0 0);
-  --neon-pink: oklch(0.97 0 0);
-  --neon-teal: oklch(0.8 0 0);
-  --marquee: oklch(0.92 0 0);
-  --screen-glow: oklch(0.95 0 0);
+  --night: oklch(0.2 0.05 265);
+  --night-deep: oklch(0.13 0.04 268);
+  --neon-pink: oklch(0.72 0.26 350);
+  --neon-teal: oklch(0.86 0.14 195);
+  --marquee: oklch(0.92 0.09 95);
+  --screen-glow: oklch(0.95 0.02 240);
+  --blueprint: oklch(0.24 0.06 262);
+  --blueprint-deep: oklch(0.17 0.05 265);
+  --blueprint-line: oklch(0.78 0.08 215);
   --font-neon: "Monoton", cursive;
   --font-script: "Yellowtail", cursive;
   --font-body: "Oswald", sans-serif;
@@ -161,11 +164,22 @@
   --color-neon-teal: var(--neon-teal);
   --color-marquee: var(--marquee);
   --color-screen-glow: var(--screen-glow);
+  --color-blueprint: var(--blueprint);
+  --color-blueprint-deep: var(--blueprint-deep);
+  --color-blueprint-line: var(--blueprint-line);
   --font-neon: var(--font-neon);
   --font-script: var(--font-script);
   --font-body: var(--font-body);
 }
-@utility sky { background: radial-gradient(ellipse at 50% 110%, oklch(0.3 0 0) 0%, var(--night) 45%, var(--night-deep) 100%); }
+@utility sky { background: radial-gradient(ellipse at 50% 110%, var(--blueprint) 0%, var(--night) 45%, var(--blueprint-deep) 100%); }
+@utility blueprint-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--blueprint-line) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--blueprint-line) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in oklab, var(--blueprint-line) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--blueprint-line) 7%, transparent) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}
 @utility stars {
   background-image: radial-gradient(1px 1px at 10% 20%, var(--screen-glow), transparent), radial-gradient(1px 1px at 30% 8%, var(--screen-glow), transparent), radial-gradient(1.5px 1.5px at 55% 15%, var(--screen-glow), transparent), radial-gradient(1px 1px at 72% 30%, var(--screen-glow), transparent), radial-gradient(1px 1px at 88% 12%, var(--screen-glow), transparent), radial-gradient(1px 1px at 18% 35%, var(--screen-glow), transparent), radial-gradient(1.5px 1.5px at 93% 40%, var(--screen-glow), transparent), radial-gradient(1px 1px at 42% 28%, var(--screen-glow), transparent);
   background-size: 400px 300px; animation: twinkle 4s ease-in-out infinite alternate;

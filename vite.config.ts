@@ -7,15 +7,15 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // Set by the SiteGround deploy, which serves the site from a subfolder. Unset for Lovable and local dev.
-const basePath = process.env.DEPLOY_BASE_PATH;
+const basePath = process.env["DEPLOY_BASE_PATH"];
 
 export default defineConfig({
-  vite: basePath ? { base: `${basePath}/` } : undefined,
+  ...(basePath ? { vite: { base: `${basePath}/` } } : {}),
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    router: basePath ? { basepath: basePath } : undefined,
+    ...(basePath ? { router: { basepath: basePath } } : {}),
     // Render routes to static HTML at build time so they can be served from .output/public.
     prerender: { enabled: true, crawlLinks: true },
   },

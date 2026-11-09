@@ -162,6 +162,8 @@ function Index() {
         <div className="absolute inset-0 blueprint-grid" />
         <div className="absolute inset-0 stars" />
         <BlueprintSketch />
+        <RestaurantSketch />
+        <CarsSketch />
 
         {/* Title block, like a blueprint's title stamp */}
         <div className="relative z-10 mt-[4vh] text-center">

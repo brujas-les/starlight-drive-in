@@ -90,9 +90,64 @@ function BlueprintSketch() {
         <text x="800" y="632" textAnchor="middle" fontSize="14" opacity="0.7">SPEAKER ROWS</text>
         <text x="800" y="746" textAnchor="middle" fontSize="14" opacity="0.7">PROJECTION BOOTH</text>
         <text x="1500" y="782" textAnchor="middle" fontSize="16">N</text>
-        <text x="1350" y="660" textAnchor="middle" fontSize="14" opacity="0.7">PARKING — ROW C</text>
       </g>
     </svg>
+  );
+}
+
+/* Fast-food restaurant with golden arches, drawn in blueprint ink.
+   Positioned in % so it stays visible at any window size. */
+function RestaurantSketch() {
+  const line = "var(--blueprint-line)";
+  return (
+    <div className="pointer-events-none absolute bottom-[10%] left-[3%] z-10 w-[26vw] max-w-[340px] min-w-[180px] opacity-90" aria-hidden="true">
+      <svg viewBox="0 0 320 280" className="w-full">
+        <g fill="none" stroke={line} strokeWidth="1.5">
+          <rect x="10" y="120" width="300" height="150" />
+          <rect x="30" y="160" width="80" height="60" />
+          <rect x="130" y="160" width="80" height="60" />
+          <line x1="10" y1="140" x2="310" y2="140" strokeDasharray="4 4" />
+          {/* Golden arches */}
+          <path d="M 70 120 C 70 30, 160 30, 160 120" strokeWidth="3" />
+          <path d="M 160 120 C 160 30, 250 30, 250 120" strokeWidth="3" />
+          {/* Roof sign */}
+          <rect x="280" y="60" width="12" height="60" />
+          <circle cx="286" cy="48" r="14" />
+          {/* Dimension line */}
+          <g strokeDasharray="2 4" opacity="0.8">
+            <line x1="10" y1="276" x2="310" y2="276" />
+          </g>
+        </g>
+        <g fill={line} fontFamily="Oswald, sans-serif" letterSpacing="3">
+          <text x="160" y="20" textAnchor="middle" fontSize="13" opacity="0.9">ARCHES — ELEV. A</text>
+          <text x="160" y="272" textAnchor="middle" fontSize="12" opacity="0"></text>
+        </g>
+      </svg>
+      <p className="mt-1 text-center text-[10px] uppercase tracking-[0.4em] text-blueprint-line/80">Restaurant</p>
+    </div>
+  );
+}
+
+/* Row of parked 1950s cars in blueprint outline, bottom right. */
+function CarsSketch() {
+  const line = "var(--blueprint-line)";
+  return (
+    <div className="pointer-events-none absolute bottom-[8%] right-[2%] z-10 hidden w-[34vw] max-w-[460px] opacity-90 md:block" aria-hidden="true">
+      <svg viewBox="0 0 460 120" className="w-full">
+        <g fill="none" stroke={line} strokeWidth="1.5">
+          {[0, 1, 2].map((i) => (
+            <g key={i} transform={`translate(${10 + i * 150}, 30)`}>
+              <path d="M 0 44 L 8 24 L 34 18 L 46 4 L 92 4 L 106 18 L 124 22 L 130 44 Z" />
+              <circle cx="32" cy="44" r="10" />
+              <circle cx="98" cy="44" r="10" />
+              <line x1="46" y1="18" x2="46" y2="4" opacity="0.6" />
+              <line x1="92" y1="4" x2="92" y2="18" opacity="0.6" />
+            </g>
+          ))}
+        </g>
+      </svg>
+      <p className="text-center text-[10px] uppercase tracking-[0.4em] text-blueprint-line/80">Parking — Row C</p>
+    </div>
   );
 }
 

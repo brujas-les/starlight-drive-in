@@ -78,9 +78,6 @@ function BlueprintSketch() {
           <line x1="560" y1="140" x2="1040" y2="140" />
           <line x1="560" y1="132" x2="560" y2="148" />
           <line x1="1040" y1="132" x2="1040" y2="148" />
-          <line x1="90" y1="780" x2="390" y2="780" />
-          <line x1="90" y1="772" x2="90" y2="788" />
-          <line x1="390" y1="772" x2="390" y2="788" />
         </g>
 
         {/* Compass rose, bottom right */}
@@ -90,8 +87,6 @@ function BlueprintSketch() {
       </g>
       <g fill={line} fontFamily="Oswald, sans-serif" letterSpacing="3">
         <text x="800" y="128" textAnchor="middle" fontSize="18">SCREEN — 40 FT</text>
-        <text x="240" y="806" textAnchor="middle" fontSize="16">RESTAURANT</text>
-        <text x="240" y="500" textAnchor="middle" fontSize="14" opacity="0.8">ARCHES — ELEV. A</text>
         <text x="800" y="632" textAnchor="middle" fontSize="14" opacity="0.7">SPEAKER ROWS</text>
         <text x="800" y="746" textAnchor="middle" fontSize="14" opacity="0.7">PROJECTION BOOTH</text>
         <text x="1500" y="782" textAnchor="middle" fontSize="16">N</text>

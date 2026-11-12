@@ -197,3 +197,83 @@
 @keyframes chase { to { background-position: 9px 0; } }
 @keyframes sweep { to { transform: rotate(360deg); } }
 @keyframes drift { from { transform: translateX(-10%); } to { transform: translateX(110vw); } }
+
+:root {
+  --wall-paper: oklch(0.96 0.008 90);
+  --wall-ink: oklch(0.19 0.004 90);
+  --wall-shadow: oklch(0.08 0 0 / 55%);
+  --wall-screen: oklch(0.82 0.008 90);
+}
+@theme inline {
+  --color-wall-paper: var(--wall-paper);
+  --color-wall-ink: var(--wall-ink);
+}
+.poster-page { background: var(--wall-paper); color: var(--wall-ink); letter-spacing: 0; }
+.wall-section { position: relative; height: 92svh; min-height: 620px; max-height: 1100px; overflow: hidden; }
+.poster-scene { position: relative; height: 100%; width: 100%; isolation: isolate; }
+.wall-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.wall-shade { position: absolute; inset: 0; background: color-mix(in oklab, var(--wall-ink) 12%, transparent); }
+.poster-layout { position: absolute; inset: 0; perspective: 1100px; }
+.pasted-poster { position: absolute; width: 18%; transform: rotate(var(--tilt)); z-index: 2; }
+.poster-paper { position: relative; width: 100%; transform-origin: top center; animation: paste-paper 1.45s cubic-bezier(.2,.65,.3,1) both; animation-delay: var(--delay); box-shadow: 1px 3px 7px var(--wall-shadow); }
+.poster-paper img { display: block; width: 100%; height: auto; }
+.poster-paper::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(103deg, transparent 28%, color-mix(in oklab, var(--wall-ink) 8%, transparent) 29%, transparent 30%, transparent 65%, color-mix(in oklab, var(--wall-paper) 40%, transparent) 66%, transparent 67%); mix-blend-mode: multiply; }
+.paste-pass { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--wall-paper) 45%, transparent), transparent); height: 22%; animation: paste-smooth 1.3s ease both; animation-delay: var(--delay); }
+.poster-1 { left: 1%; top: 7%; --tilt: -5deg; --delay: .15s; }
+.poster-2 { left: 15%; top: -8%; --tilt: 4deg; --delay: 1.1s; }
+.poster-3 { right: 1%; top: 8%; --tilt: 3deg; --delay: 2.1s; }
+.poster-4 { right: 15%; top: -10%; --tilt: -4deg; --delay: .6s; }
+.poster-5 { left: -3%; top: 48%; --tilt: 4deg; --delay: 2.6s; }
+.poster-6 { right: -3%; top: 49%; --tilt: -5deg; --delay: 3.1s; }
+.poster-7 { left: 17%; bottom: -13%; width: 19%; --tilt: -3deg; --delay: 3.6s; }
+.poster-8 { right: 17%; bottom: -15%; width: 19%; --tilt: 5deg; --delay: 4.1s; }
+.poster-9 { left: 39%; bottom: -19%; --tilt: -3deg; --delay: 4.6s; }
+.poster-10 { left: 40%; top: -15%; --tilt: 2deg; --delay: 5.1s; }
+.wall-screen { position: absolute; z-index: 5; width: 56%; left: 22%; top: 50%; transform: translateY(-50%) rotate(-1deg); background: var(--wall-ink); box-shadow: 2px 8px 20px var(--wall-shadow); }
+.screen-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 18px; color: var(--wall-paper); }
+.screen-caption h1 { font-size: 22px; font-weight: 500; }
+.screen-caption span { font-size: 11px; text-transform: uppercase; }
+.wall-film-frame { aspect-ratio: 16/9; overflow: hidden; border: 5px solid var(--wall-ink); }
+.wall-countdown { position: relative; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; background: var(--wall-screen); color: var(--wall-ink); overflow: hidden; }
+.wall-countdown > span { font-size: 110px; font-weight: 500; line-height: 1; z-index: 1; }
+.countdown-ring { position: absolute; border: 2px solid var(--wall-ink); border-radius: 50%; height: 85%; aspect-ratio: 1; }
+.countdown-ring.inner { height: 74%; }
+.countdown-cross { position: absolute; background: color-mix(in oklab, var(--wall-ink) 55%, transparent); }
+.countdown-cross.horizontal { width: 100%; height: 1px; top: 50%; }
+.countdown-cross.vertical { width: 1px; height: 100%; left: 50%; }
+.countdown-sweep { position: absolute; width: 2px; height: 75%; background: var(--wall-ink); left: 50%; top: 50%; transform-origin: top; animation: sweep 1s linear infinite; opacity: .5; }
+.wall-replay { position: absolute; bottom: 22px; right: 22px; z-index: 6; color: var(--wall-paper); background: var(--wall-ink); border-radius: 50%; }
+.wall-replay:hover { color: var(--wall-ink); background: var(--wall-paper); }
+.film-sound { position: absolute; bottom: 12px; right: 12px; background: var(--wall-ink); color: var(--wall-paper); }
+.wall-about { position: relative; padding: 42px 28px 80px; }
+@keyframes paste-paper {
+  0% { opacity: 0; clip-path: inset(0 0 100% 0); transform: rotateX(-45deg) translateY(-20px); }
+  12% { opacity: 1; }
+  65% { clip-path: inset(0); transform: rotateX(-12deg) translateY(0); box-shadow: 0 18px 22px var(--wall-shadow); }
+  100% { opacity: 1; clip-path: inset(0); transform: rotateX(0); box-shadow: 1px 3px 7px var(--wall-shadow); }
+}
+@keyframes paste-smooth { 0% { top: -25%; opacity: 0; } 25% { opacity: 1; } 90% { opacity: .5; } 100% { top: 100%; opacity: 0; } }
+@media (max-width: 767px) {
+  .wall-section { height: 88svh; min-height: 580px; }
+  .wall-photo { object-position: 42% center; }
+  .pasted-poster { width: 32%; }
+  .poster-1 { left: -7%; top: 9%; }
+  .poster-2 { left: 20%; top: -3%; }
+  .poster-3 { right: -5%; top: 14%; }
+  .poster-4 { right: 17%; top: -5%; }
+  .poster-5 { left: -7%; top: 63%; }
+  .poster-6 { right: -7%; top: 63%; }
+  .poster-7 { width: 32%; left: 18%; bottom: -2%; }
+  .poster-8 { width: 32%; right: 18%; bottom: -7%; }
+  .poster-9 { left: 35%; bottom: -19%; }
+  .poster-10 { left: 37%; top: -14%; }
+  .wall-screen { width: 90%; left: 5%; top: 48%; }
+  .screen-caption { padding: 10px 12px; }
+  .screen-caption h1 { font-size: 20px; }
+  .wall-countdown > span { font-size: 80px; }
+  .wall-about { padding: 30px 22px 60px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .poster-paper, .paste-pass, .countdown-sweep, .film-grain { animation: none; }
+  .paste-pass { display: none; }
+}

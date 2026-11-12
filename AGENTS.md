@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the poster-wall scene in a dedicated frontend component with CDN asset pointers and CSS application animations so artwork remains exact and the wall can be replaced independently.
